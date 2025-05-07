@@ -160,29 +160,30 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!dateCell) return;
             let cellText = dateCell.textContent.trim().toLowerCase();
 
-            // Si la cellule contient une date au format JJ-MM-YYYY ou JJ/MM/YYYY
-            let dateMatch = cellText.match(/^(\d{2})[-\\/](\d{2})[-\\/](\d{4})$/);
+            // Gère les dates au format JJ-MM-YYYY, JJ/MM/YYYY
+            let dateMatch = cellText.match(/^([0-9]{2})[-\/]{1}([0-9]{2})[-\/]{1}([0-9]{4})$/);
             if (dateMatch) {
                 let [ , day, month, year ] = dateMatch;
                 let matchDate = new Date(`${year}-${month}-${day}`);
+                let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
                 if (
-                    matchDate.getFullYear() === now.getFullYear() &&
-                    matchDate.getMonth() === now.getMonth() &&
-                    matchDate.getDate() === now.getDate()
+                    matchDate.getFullYear() === today.getFullYear() &&
+                    matchDate.getMonth() === today.getMonth() &&
+                    matchDate.getDate() === today.getDate()
                 ) {
                     dateCell.textContent = "aujourd'hui";
                 } else if (
-                    matchDate.getFullYear() === now.getFullYear() &&
-                    matchDate.getMonth() === now.getMonth() &&
-                    matchDate.getDate() === now.getDate() + 1
+                    matchDate.getFullYear() === tomorrow.getFullYear() &&
+                    matchDate.getMonth() === tomorrow.getMonth() &&
+                    matchDate.getDate() === tomorrow.getDate()
                 ) {
                     dateCell.textContent = "demain";
                 }
             }
 
-            // Si la cellule contient "demain"
+            // Si la cellule contient "demain", vérifie si on est le jour du match
             if (cellText === "demain") {
-                // Trouver l'heure du match
                 let timeCell = row.querySelector('.dt');
                 if (timeCell) {
                     let timeParts = timeCell.textContent.trim().split(':');
