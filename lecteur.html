@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecteur Vidéo</title>
+    <style>
+        body {
+            margin: 0;
+            background: #181828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .video-player-container {
+            background: #23234a;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,44,88,0.25);
+            padding: 24px;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-player-container h1 {
+            color: #b48cff;
+            margin-bottom: 18px;
+            font-size: 1.5rem;
+        }
+        .video-iframe {
+            width: 100%;
+            min-width: 320px;
+            height: 480px;
+            border: none;
+            border-radius: 12px;
+            background: #000;
+        }
+        @media (max-width: 600px) {
+            .video-iframe {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-player-container">
+        <h1>Lecteur Vidéo</h1>
+        <iframe class="video-iframe" src="https://rereyano.ru/player/2/70" allowfullscreen allow="autoplay" scrolling="no"></iframe>
+    </div>
+</body>
+</html>
