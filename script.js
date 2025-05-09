@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('fullscreen-player').style.display = 'flex';
             // Injecter l'iframe correspondant
             var iframeUrl = btn.getAttribute('data-iframe');
-            document.getElementById('fullscreen-iframe-container').innerHTML = '<iframe src="' + iframeUrl + '" allowfullscreen allow="autoplay" scrolling="no" frameborder="0" style="width:100%;height:100%;border-radius:12px;background:#000;"></iframe>';
+            document.getElementById('fullscreen-iframe-container').innerHTML = '<iframe src="' + iframeUrl + '" allowfullscreen allow="autoplay" scrolling="no" frameborder="0" style="width:100%;height:100%"></iframe>';
         });
     });
     // Bouton pour fermer le lecteur et réafficher la page
@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hideRowsAfter3h();
     setInterval(hideRowsAfter3h, 60000);
 
+    // === MISE À JOUR "AUJOURD'HUI"/"DEMAIN" POUR JJ-MM-YYYY ===
     function updateDateLabels() {
         var now = new Date();
         document.querySelectorAll('tr').forEach(function(row) {
@@ -160,11 +161,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!dateCell) return;
             let cellText = dateCell.textContent.trim().toLowerCase();
 
-            // Gère les dates au format JJ-MM-YYYY, JJ/MM/YYYY
+            // Détecter JJ-MM-YYYY ou JJ/MM/YYYY
             let dateMatch = cellText.match(/^([0-9]{2})[-\/]{1}([0-9]{2})[-\/]{1}([0-9]{4})$/);
+            let matchDate;
             if (dateMatch) {
                 let [ , day, month, year ] = dateMatch;
-                let matchDate = new Date(`${year}-${month}-${day}`);
+                matchDate = new Date(year, parseInt(month,10)-1, parseInt(day,10)); // JS: month 0-based !
+            }
+
+            if (matchDate) {
                 let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
                 let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
                 if (
@@ -182,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Si la cellule contient "demain", vérifie si on est le jour du match
+            // Si la cellule contient "demain", vérifier si on est le bon jour
             if (cellText === "demain") {
                 let timeCell = row.querySelector('.dt');
                 if (timeCell) {
@@ -203,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     updateDateLabels();
     setInterval(updateDateLabels, 60000);
+
 });
 
 // Anti clic droit
