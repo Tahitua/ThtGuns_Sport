@@ -282,8 +282,8 @@ function debounce(func, wait) {
 
 // Export functions for other modules
 window.CineStream = {
-    filmsData,
-    myList,
+    get filmsData() { return filmsData; },
+    get myList() { return myList; },
     toggleMyList,
     playMovie,
     getMoviesByGenre

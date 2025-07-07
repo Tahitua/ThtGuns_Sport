@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Liste - CineStream</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .my-list-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(44, 44, 88, 0.8), rgba(108, 46, 183, 0.8));
+        }
+        
+        .my-list-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .my-list-header p {
+            font-size: 1.2rem;
+            color: #e0e0ff;
+        }
+        
+        .list-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #b48cff;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #e0e0ff;
+            margin-top: 5px;
+        }
+        
+        .list-content {
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .list-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .sort-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .sort-controls select {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2b2b4b;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .clear-list-btn {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        
+        .clear-list-btn:hover {
+            background: #f44336;
+        }
+        
+        .empty-list {
+            text-align: center;
+            padding: 80px 20px;
+            color: #bdbdf7;
+        }
+        
+        .empty-list-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-list h2 {
+            margin-bottom: 15px;
+            color: #b48cff;
+        }
+        
+        .empty-list p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .browse-btn {
+            display: inline-block;
+            background: #6c2eb7;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .browse-btn:hover {
+            background: #8a4ad1;
+        }
+        
+        .my-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+        }
+        
+        .list-movie-card {
+            position: relative;
+        }
+        
+        .remove-from-list {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(211, 47, 47, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .list-movie-card:hover .remove-from-list {
+            opacity: 1;
+        }
+        
+        .remove-from-list:hover {
+            background: #f44336;
+        }
+        
+        @media (max-width: 768px) {
+            .my-list-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .list-stats {
+                gap: 15px;
+            }
+            
+            .stat-card {
+                min-width: 100px;
+                padding: 15px;
+            }
+            
+            .list-content {
+                padding: 20px;
+            }
+            
+            .list-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .sort-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CineStream</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Films</a></li>
+                <li><a href="catalogue.html?type=series">Séries</a></li>
+                <li><a href="ma-liste.html" class="active">Ma Liste</a></li>
+                <li><a href="#" id="search-btn">Recherche</a></li>
+            </ul>
+        </nav>
+        <div class="search-container" id="search-container" style="display: none;">
+            <input type="text" id="search-input" placeholder="Rechercher un film...">
+            <button id="search-close">&times;</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="my-list-header">
+            <h1>Ma Liste</h1>
+            <p>Retrouvez tous vos films et séries sauvegardés</p>
+            
+            <div class="list-stats" id="list-stats">
+                <!-- Stats will be loaded here -->
+            </div>
+        </div>
+
+        <div class="list-content">
+            <div class="list-controls" id="list-controls" style="display: none;">
+                <div class="sort-controls">
+                    <label for="sort-list">Trier par :</label>
+                    <select id="sort-list">
+                        <option value="added">Date d'ajout</option>
+                        <option value="title">Titre (A-Z)</option>
+                        <option value="year">Année</option>
+                        <option value="rating">Note</option>
+                    </select>
+                </div>
+                
+                <button class="clear-list-btn" id="clear-list">
+                    Vider la liste
+                </button>
+            </div>
+
+            <div id="list-content-area">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen player -->
+    <div id="fullscreen-player" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:#181828; align-items:center; justify-content:center; flex-direction:column;">
+        <button id="close-player" style="margin-bottom:18px; padding:10px 24px; border:none; border-radius:8px; background:#6c2eb7; color:#fff; font-size:1.2rem; cursor:pointer;">Fermer</button>
+        <div id="fullscreen-iframe-container" style="width:90vw; max-width:900px; height:70vh; display:flex; align-items:center; justify-content:center;">
+            <!-- L'iframe vidéo sera injecté ici -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 CineStream - Votre plateforme de streaming favorite</p>
+        <div class="footer-links">
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Confidentialité</a>
+            <a href="#terms">Conditions</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        let myListMovies = [];
+        let sortBy = 'added';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for main.js to load films data
+            const checkForData = setInterval(() => {
+                if (window.CineStream && window.CineStream.filmsData) {
+                    clearInterval(checkForData);
+                    loadMyList();
+                }
+            }, 100);
+
+            // Initialize search functionality
+            initSearchFunctionality();
+            
+            // Setup event listeners
+            setupEventListeners();
+        });
+
+        function loadMyList() {
+            const myListIds = JSON.parse(localStorage.getItem('myList')) || [];
+            const allMovies = window.CineStream.filmsData.films;
+            
+            // Get movies from my list
+            myListMovies = allMovies.filter(movie => myListIds.includes(movie.id));
+            
+            // Display stats
+            displayStats();
+            
+            // Display content
+            displayListContent();
+        }
+
+        function displayStats() {
+            const statsContainer = document.getElementById('list-stats');
+            const totalMovies = myListMovies.length;
+            
+            // Calculate some basic stats
+            const totalDuration = myListMovies.reduce((total, movie) => total + movie.duree, 0);
+            const averageRating = totalMovies > 0 ? 
+                (myListMovies.reduce((total, movie) => total + movie.note, 0) / totalMovies).toFixed(1) : 0;
+            
+            const genres = [...new Set(myListMovies.flatMap(movie => movie.genre))];
+            const topGenre = genres.length > 0 ? genres[0] : 'Aucun';
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalMovies}</div>
+                    <div class="stat-label">Films</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${Math.round(totalDuration / 60)}h</div>
+                    <div class="stat-label">Durée totale</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${averageRating}</div>
+                    <div class="stat-label">Note moyenne</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${genres.length}</div>
+                    <div class="stat-label">Genres</div>
+                </div>
+            `;
+        }
+
+        function displayListContent() {
+            const contentArea = document.getElementById('list-content-area');
+            const controls = document.getElementById('list-controls');
+            
+            if (myListMovies.length === 0) {
+                // Show empty state
+                controls.style.display = 'none';
+                contentArea.innerHTML = `
+                    <div class="empty-list">
+                        <div class="empty-list-icon">📝</div>
+                        <h2>Votre liste est vide</h2>
+                        <p>Explorez notre catalogue et ajoutez vos films préférés à votre liste personnelle.<br>
+                        Vous pourrez les retrouver ici et les regarder quand vous le souhaitez.</p>
+                        <a href="catalogue.html" class="browse-btn">Parcourir le catalogue</a>
+                    </div>
+                `;
+            } else {
+                // Show movies
+                controls.style.display = 'flex';
+                
+                // Sort movies
+                sortMovies();
+                
+                const grid = document.createElement('div');
+                grid.className = 'my-list-grid';
+                
+                myListMovies.forEach(movie => {
+                    const movieCard = createListMovieCard(movie);
+                    grid.appendChild(movieCard);
+                });
+                
+                contentArea.innerHTML = '';
+                contentArea.appendChild(grid);
+            }
+        }
+
+        function createListMovieCard(movie) {
+            const card = document.createElement('div');
+            card.className = 'movie-card list-movie-card';
+            card.onclick = () => window.location.href = `film-detail.html?id=${movie.id}`;
+            
+            card.innerHTML = `
+                <button class="remove-from-list" onclick="event.stopPropagation(); removeFromList(${movie.id})" title="Retirer de ma liste">
+                    ×
+                </button>
+                <div class="movie-poster">
+                    ${movie.affiche ? 
+                        `<img src="${movie.affiche}" alt="${movie.titre}" onerror="this.style.display='none'">` : 
+                        `<span>Image non disponible</span>`
+                    }
+                    <div class="play-overlay" onclick="event.stopPropagation(); playMovie(${JSON.stringify(movie).replace(/"/g, '&quot;')})"></div>
+                </div>
+                <div class="movie-info">
+                    <div class="movie-title">${movie.titre}</div>
+                    <div class="movie-year">${movie.annee}</div>
+                    <div class="movie-genre">${movie.genre.slice(0, 2).join(', ')}</div>
+                    <div class="movie-rating">
+                        ⭐ ${movie.note}/10
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function sortMovies() {
+            switch (sortBy) {
+                case 'title':
+                    myListMovies.sort((a, b) => a.titre.localeCompare(b.titre));
+                    break;
+                case 'year':
+                    myListMovies.sort((a, b) => b.annee - a.annee);
+                    break;
+                case 'rating':
+                    myListMovies.sort((a, b) => b.note - a.note);
+                    break;
+                case 'added':
+                default:
+                    // Keep original order (last added first)
+                    const myListIds = JSON.parse(localStorage.getItem('myList')) || [];
+                    myListMovies.sort((a, b) => myListIds.indexOf(b.id) - myListIds.indexOf(a.id));
+                    break;
+            }
+        }
+
+        function setupEventListeners() {
+            // Sort change
+            const sortSelect = document.getElementById('sort-list');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (e) => {
+                    sortBy = e.target.value;
+                    displayListContent();
+                });
+            }
+            
+            // Clear list
+            const clearButton = document.getElementById('clear-list');
+            if (clearButton) {
+                clearButton.addEventListener('click', () => {
+                    if (confirm('Êtes-vous sûr de vouloir vider votre liste ? Cette action est irréversible.')) {
+                        localStorage.removeItem('myList');
+                        myListMovies = [];
+                        displayStats();
+                        displayListContent();
+                    }
+                });
+            }
+            
+            // Close fullscreen player
+            const closePlayer = document.getElementById('close-player');
+            if (closePlayer) {
+                closePlayer.addEventListener('click', closeFullscreenPlayer);
+            }
+        }
+
+        function removeFromList(movieId) {
+            if (window.CineStream && window.CineStream.toggleMyList) {
+                window.CineStream.toggleMyList(movieId);
+                
+                // Reload the list
+                loadMyList();
+            }
+        }
+
+        function playMovie(movie) {
+            if (window.CineStream && window.CineStream.playMovie) {
+                window.CineStream.playMovie(movie);
+            }
+        }
+
+        function initSearchFunctionality() {
+            const searchBtn = document.getElementById('search-btn');
+            const searchContainer = document.getElementById('search-container');
+            const searchInput = document.getElementById('search-input');
+            const searchClose = document.getElementById('search-close');
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchContainer.style.display = searchContainer.style.display === 'none' ? 'block' : 'none';
+                    if (searchContainer.style.display === 'block') {
+                        searchInput.focus();
+                    }
+                });
+            }
+            
+            if (searchClose) {
+                searchClose.addEventListener('click', () => {
+                    searchContainer.style.display = 'none';
+                });
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        window.location.href = `catalogue.html?search=${encodeURIComponent(e.target.value)}`;
+                    }
+                });
+            }
+        }
+
+        function closeFullscreenPlayer() {
+            const fullscreenPlayer = document.getElementById('fullscreen-player');
+            const iframeContainer = document.getElementById('fullscreen-iframe-container');
+            
+            if (!fullscreenPlayer || !iframeContainer) return;
+            
+            fullscreenPlayer.style.display = 'none';
+            iframeContainer.innerHTML = '';
+            
+            document.querySelector('header').style.display = '';
+            document.querySelector('main').style.display = '';
+            document.querySelector('footer').style.display = '';
+        }
+    </script>
+</body>
+</html>

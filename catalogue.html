@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue - CineStream</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .catalog-filters {
+            background: #23234a;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #b48cff;
+            font-size: 0.9rem;
+        }
+        
+        .filter-group select, .filter-group input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2b2b4b;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        
+        .pagination button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background: #2b2b4b;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .pagination button:hover, .pagination button.active {
+            background: #6c2eb7;
+        }
+        
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .catalog-header h1 {
+            color: #b48cff;
+            margin: 0;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-toggle button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            background: #2b2b4b;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .view-toggle button.active {
+            background: #6c2eb7;
+        }
+        
+        .results-count {
+            color: #bdbdf7;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CineStream</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html" class="active">Films</a></li>
+                <li><a href="catalogue.html?type=series">Séries</a></li>
+                <li><a href="ma-liste.html">Ma Liste</a></li>
+                <li><a href="#" id="search-btn">Recherche</a></li>
+            </ul>
+        </nav>
+        <div class="search-container" id="search-container" style="display: none;">
+            <input type="text" id="search-input" placeholder="Rechercher un film...">
+            <button id="search-close">&times;</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <div class="catalog-header">
+                <h1 id="page-title">Catalogue des Films</h1>
+                <div class="view-toggle">
+                    <button id="grid-view" class="active">Grille</button>
+                    <button id="list-view">Liste</button>
+                </div>
+            </div>
+
+            <div class="catalog-filters">
+                <div class="filter-group">
+                    <label for="genre-filter">Genre</label>
+                    <select id="genre-filter">
+                        <option value="">Tous les genres</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="year-filter">Année</label>
+                    <select id="year-filter">
+                        <option value="">Toutes les années</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sort-filter">Trier par</label>
+                    <select id="sort-filter">
+                        <option value="title">Titre (A-Z)</option>
+                        <option value="year">Année (récent)</option>
+                        <option value="rating">Note</option>
+                        <option value="popularity">Popularité</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="search-filter">Recherche</label>
+                    <input type="text" id="search-filter" placeholder="Rechercher...">
+                </div>
+            </div>
+
+            <div class="results-count" id="results-count">
+                <!-- Dynamically populated -->
+            </div>
+
+            <div class="catalog-grid" id="catalog-grid">
+                <!-- Movies will be loaded dynamically -->
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be loaded dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen player (reused from index) -->
+    <div id="fullscreen-player" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:#181828; align-items:center; justify-content:center; flex-direction:column;">
+        <button id="close-player" style="margin-bottom:18px; padding:10px 24px; border:none; border-radius:8px; background:#6c2eb7; color:#fff; font-size:1.2rem; cursor:pointer;">Fermer</button>
+        <div id="fullscreen-iframe-container" style="width:90vw; max-width:900px; height:70vh; display:flex; align-items:center; justify-content:center;">
+            <!-- L'iframe vidéo sera injecté ici -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 CineStream - Votre plateforme de streaming favorite</p>
+        <div class="footer-links">
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Confidentialité</a>
+            <a href="#terms">Conditions</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/catalogue.js"></script>
+</body>
+</html>
