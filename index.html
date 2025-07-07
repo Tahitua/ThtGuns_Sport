@@ -3,485 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThtGuns Sport Style</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CineStream - Votre plateforme de streaming</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <div class="logo">ThtGuns Sport</div>
+        <div class="logo">CineStream</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Films</a></li>
+                <li><a href="catalogue.html?type=series">Séries</a></li>
+                <li><a href="ma-liste.html">Ma Liste</a></li>
+                <li><a href="#" id="search-btn">Recherche</a></li>
+            </ul>
+        </nav>
+        <div class="search-container" id="search-container" style="display: none;">
+            <input type="text" id="search-input" placeholder="Rechercher un film...">
+            <button id="search-close">&times;</button>
+        </div>
     </header>
     <main>
-        <section class="hero">
-            <h1>Bienvenue sur ThtGuns Sport</h1>
-            <p>Retrouvez toute l'actualité du football en direct</p>
-        </section>
-        <section class="news">
-            <!-- Tableau des matchs, le bouton "Regarder" sera remplacé par un iframe selon besoin -->
-            <div class="table-container">
-                <table class="table table-dark table-hover border-Primary">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Date</th>
-                            <th>Heure</th>
-                            <th class="hidden-xs">compétition</th>
-                            <th>événement</th>
-                            <th>Direct</th>
-                            <th>Sts</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- ...lignes de matchs copiées ici... -->
-                        <tbody>
-							<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>13-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Valladolid - Gerone </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/150">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>13-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Real Sociedad - Celta Vigo </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/151">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>13-May-2025</td>
-					<td class="dt">21:30</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Seville - Las Palmas </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/152">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>14-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Alaves - Valence </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/153">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>14-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Villarreal - Leganes </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/154">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>14-May-2025</td>
-					<td class="dt">21:00</td>
-					<td class="hidden-xs">Coppa Italia</td>
-					<td class="event-title">AC Milan - Bologne </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/155">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>14-May-2025</td>
-					<td class="dt">21:30</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Real Madrid - Majorque </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/156">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>15-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Rayo - Betis </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/157">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>15-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Osasuna - Atletico </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/158">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>15-May-2025</td>
-					<td class="dt">21:30</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Getafe - Athletic Bilbao </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/159">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>15-May-2025</td>
-					<td class="dt">21:30</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Espanyol - Barcelone </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/160">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>16-May-2025</td>
-					<td class="dt">21:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">chelsea - Manchester United </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/161">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Hoffenheim - Bayern </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/162">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Heidenheim - Werder Breme </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/163">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Monchengladbach - Wolfsbourg </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/164">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Augsbourg - Union Berlin </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/165">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Dortmund - Holstein Kiel </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/166">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">RB Leipzig - Stuttgart </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/167">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Fribourg - Eintracht Francfort </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/168">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">Mayence - Leverkusen </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/169">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">15:30</td>
-					<td class="hidden-xs">Bundesliga</td>
-					<td class="event-title">St Pauli - Bochum </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/170">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">16:00</td>
-					<td class="hidden-xs">Fa Cup</td>
-					<td class="event-title">Manchester City - Crystal Palace </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/171">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Nantes - Montpellier </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/172">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Saint Étienne - Toulouse </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/173">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Strasbourg - Le Havre </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/174">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Lyon - Angers </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/175">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Marseille - Rennes </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/176">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Lens - Monaco </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/177">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Nice - Brest </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/178">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Lille - Reims </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/179">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>17-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Ligue 1</td>
-					<td class="event-title">Paris PSG - Auxerre </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/180">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">13:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Everton - Southampton  </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/181">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">15:15</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">West Ham - Nottingham Forest </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/182">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">15:15</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Aston Villa - Tottenham </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/183">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">16:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Crystal Palace - Wolverhampton </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/184">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">16:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Brentford - Fulham </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/185">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">16:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Leicetser - Ipswich Town </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/186">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">17:30</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Arsenal - Newcastle </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/187">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Las Palmas - Leganes </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/188">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Valladolid - Deportivo Alaves </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/189">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Osasuna - Espanyol </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/190">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Celta Vigo - Rayo </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/191">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Barcelone - Villarreal </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/192">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Real Sociedad - Girona </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/193">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Séville - Réal Madrid </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/194">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Majorque - Getafe </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/195">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Valence - Athletic Bilbao </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/196">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">19:00</td>
-					<td class="hidden-xs">Laliga</td>
-					<td class="event-title">Atletico Madrid - Betis </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/197">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>
-								<tr>
-					<td><img src="https://foot22.ru/assets/uploads/cat/1.png"></td>
-					<td>18-May-2025</td>
-					<td class="dt">20:00</td>
-					<td class="hidden-xs">Premier League</td>
-					<td class="event-title">Manchester City - Bournemouth </td>
-					<td><a class="event btn btn-default btn-xs" data-iframe="https://rereyano.ru/player/2/198">Regarder</a></td>
-					<td><img src="https://foot22.ru/assets/images/notlive.png"></td>
-				</tr>														
-		</tbody>
-                        <!-- ...autres lignes à ajouter selon besoin... -->
-                    </tbody>
-                </table>
+        <section class="hero" id="hero-section">
+            <div class="hero-content">
+                <div class="hero-info">
+                    <h1 id="hero-title">Inception</h1>
+                    <p id="hero-description">Dom Cobb est un voleur expérimenté dans l'art périlleux de l'extraction, voler les secrets les plus profonds du subconscient pendant que l'esprit est le plus vulnérable.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="hero-watch">
+                            <i class="icon-play"></i> Regarder maintenant
+                        </button>
+                        <button class="btn btn-secondary" id="hero-info">
+                            <i class="icon-info"></i> Plus d'infos
+                        </button>
+                        <button class="btn btn-list" id="hero-list">
+                            <i class="icon-plus"></i> Ma Liste
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
-    </main>
+        <section class="content">
+            <!-- Films populaires -->
+            <div class="movie-section">
+                <h2>Films populaires</h2>
+                <div class="movie-carousel" id="popular-movies">
+                    <!-- Movies will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Nouveautés -->
+            <div class="movie-section">
+                <h2>Nouveautés</h2>
+                <div class="movie-carousel" id="new-movies">
+                    <!-- Movies will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Action -->
+            <div class="movie-section">
+                <h2>Action</h2>
+                <div class="movie-carousel" id="action-movies">
+                    <!-- Movies will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Science-Fiction -->
+            <div class="movie-section">
+                <h2>Science-Fiction</h2>
+                <div class="movie-carousel" id="scifi-movies">
+                    <!-- Movies will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Crime -->
+            <div class="movie-section">
+                <h2>Crime</h2>
+                <div class="movie-carousel" id="crime-movies">
+                    <!-- Movies will be loaded dynamically -->
+                </div>
+            </div>
+        </section>    </main>
     <div id="video-modal" class="video-modal" style="display:none;">
         <div class="video-modal-content">
             <span class="video-modal-close" id="close-video">&times;</span>
@@ -498,161 +100,14 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2025 ThtGuns Sport - Tous droits réservés</p>
+        <p>&copy; 2025 CineStream - Votre plateforme de streaming favorite</p>
+        <div class="footer-links">
+            <a href="#about">À propos</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Confidentialité</a>
+            <a href="#terms">Conditions</a>
+        </div>
     </footer>
-    <script src="script.js"></script>
-    <script>
-        function hideRowsAfter3h() {
-            var now = new Date();
-            document.querySelectorAll('tr').forEach(function(row) {
-                var dateCell = row.querySelector('td:nth-child(2)');
-                var timeCell = row.querySelector('.dt');
-                if (dateCell && timeCell && dateCell.textContent.trim().toLowerCase() === "aujourd'hui") {
-                    var timeParts = timeCell.textContent.trim().split(':');
-                    if (timeParts.length === 2) {
-                        var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(timeParts[0]), parseInt(timeParts[1]));
-                        var end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // +3h
-                        if (now >= end) {
-                            row.style.display = 'none';
-                        } else {
-                            row.style.display = '';
-                        }
-                    }
-                }
-            });
-        }
-        hideRowsAfter3h();
-        setInterval(hideRowsAfter3h, 60000);
-
-        function updateLiveStatus() {
-            var now = new Date();
-            document.querySelectorAll('tr').forEach(function(row) {
-                var dateCell = row.querySelector('td:nth-child(2)');
-                var timeCell = row.querySelector('.dt');
-                var statusCell = row.querySelector('td:last-child img');
-                if (dateCell && timeCell && statusCell && dateCell.textContent.trim().toLowerCase() === "aujourd'hui") {
-                    var timeParts = timeCell.textContent.trim().split(':');
-                    if (timeParts.length === 2) {
-                        var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(timeParts[0]), parseInt(timeParts[1]));
-                        var end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // 3h
-                        if (now >= start && now < end) {
-                            statusCell.src = "https://foot22.ru/assets/images/live.gif";
-                        } else {
-                            statusCell.src = "https://foot22.ru/assets/images/notlive.png";
-                        }
-                    }
-                }
-            });
-        }
-        updateLiveStatus();
-        setInterval(updateLiveStatus, 60000);
-
-        function updateButtonLiveClass() {
-            var now = new Date();
-            document.querySelectorAll('tr').forEach(function(row) {
-                var dateCell = row.querySelector('td:nth-child(2)');
-                var timeCell = row.querySelector('.dt');
-                var btn = row.querySelector('.btn.event');
-                if (dateCell && timeCell && btn && dateCell.textContent.trim().toLowerCase() === "aujourd'hui") {
-                    var timeParts = timeCell.textContent.trim().split(':');
-                    if (timeParts.length === 2) {
-                        var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), parseInt(timeParts[0]), parseInt(timeParts[1]));
-                        var end = new Date(start.getTime() + 3 * 60 * 60 * 1000); // 3h
-                        if (now >= start && now < end) {
-                            btn.classList.remove('btn-default');
-                            btn.classList.add('btn-danger');
-                        } else {
-                            btn.classList.remove('btn-danger');
-                            btn.classList.add('btn-default');
-                        }
-                    }
-                }
-            });
-        }
-        updateButtonLiveClass();
-        setInterval(updateButtonLiveClass, 60000);
-
-        function updateDateLabels() {
-            var now = new Date();
-            document.querySelectorAll('tr').forEach(function(row) {
-                var dateCell = row.querySelector('td:nth-child(2)');
-                if (!dateCell) return;
-                let cellText = dateCell.textContent.trim().toLowerCase();
-
-                // Si la cellule contient une date au format JJ-MM-YYYY ou JJ/MM/YYYY
-                let dateMatch = cellText.match(/^(\d{2})[-\\/](\d{2})[-\\/](\d{4})$/);
-                if (dateMatch) {
-                    let [ , day, month, year ] = dateMatch;
-                    let matchDate = new Date(`${year}-${month}-${day}`);
-                    if (
-                        matchDate.getFullYear() === now.getFullYear() &&
-                        matchDate.getMonth() === now.getMonth() &&
-                        matchDate.getDate() === now.getDate()
-                    ) {
-                        dateCell.textContent = "aujourd'hui";
-                    } else if (
-                        matchDate.getFullYear() === now.getFullYear() &&
-                        matchDate.getMonth() === now.getMonth() &&
-                        matchDate.getDate() === now.getDate() + 1
-                    ) {
-                        dateCell.textContent = "demain";
-                    }
-                }
-
-                // Si la cellule contient "demain"
-                if (cellText === "demain") {
-                    // Trouver l'heure du match
-                    let timeCell = row.querySelector('.dt');
-                    if (timeCell) {
-                        let timeParts = timeCell.textContent.trim().split(':');
-                        if (timeParts.length === 2) {
-                            let matchDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, parseInt(timeParts[0]), parseInt(timeParts[1]));
-                            if (
-                                now.getFullYear() === matchDate.getFullYear() &&
-                                now.getMonth() === matchDate.getMonth() &&
-                                now.getDate() === matchDate.getDate()
-                            ) {
-                                dateCell.textContent = "aujourd'hui";
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        updateDateLabels();
-
-        document.getElementById('fullscreen-iframe-container').innerHTML =
-            '<iframe src="' + encodeURI(iframeUrl) + '" allowfullscreen allow="autoplay" scrolling="no" frameborder="0" style="width:100%;height:100%;border-radius:12px;background:#000;" sandbox="allow-scripts allow-same-origin"></iframe>';
-    </script>
-    <script>
-        // Additional script to handle iframe events or other functionalities can be added here
-        window.addEventListener('message', function(event) {
-            // Handle messages from the iframe
-            console.log('Message received from iframe:', event.data);
-            // You can add additional handling logic here based on the message content
-            if (event.data.type === 'closeModal') {
-                // Close the video modal if requested by the iframe
-                var modal = document.getElementById('video-modal');
-                if (modal) modal.style.display = 'none';
-            }
-            if (event.data.type === 'fullscreen') {
-                // Open fullscreen player with the provided URL
-                var url = event.data.url;
-                if (url) {
-                    var fullscreen = document.getElementById('fullscreen-player');
-                    var container = document.getElementById('fullscreen-iframe-container');
-                    if (fullscreen && container) {
-                        container.innerHTML = '<iframe src="' + encodeURI(url) + '" allowfullscreen allow="autoplay" scrolling="no" frameborder="0" style="width:100%;height:100%;border-radius:12px;background:#000;" sandbox="allow-scripts allow-same-origin"></iframe>';
-                        fullscreen.style.display = 'flex';
-                    }
-                }
-            }           
-            // Example: if (event.data.type === 'someType') { ... }
-            if (event.data.type === 'update') {
-                // Handle update message
-                console.log('Update received:', event.data.payload);
-            }
-        });
-</script>
+    <script src="js/main.js"></script>
 </body>
 </html>
