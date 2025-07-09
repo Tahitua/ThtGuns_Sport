@@ -77,6 +77,20 @@ nav li:hover {
 .hero button:hover {
   background: #b0060c;
 }
+.video-section {
+  padding: 30px 0;
+  background: #181818;
+  text-align: center;
+}
+.video-section h2 {
+  margin-bottom: 16px;
+}
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
 .carousel-section {
   padding: 30px 40px;
 }
@@ -132,4 +146,5 @@ nav li:hover {
   .carousel-track img { width: 160px; height: 90px; }
   .carousel-section { padding: 20px 10px; }
   header { padding: 0 10px; }
+  .video-container { width: 100%; }
 }
